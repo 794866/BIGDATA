@@ -1,0 +1,7 @@
+DROP TABLE RatingDetail;
+DROP TABLE Actor;
+DROP TABLE PELICULA;
+DROP TABLE EquipoProduccion;
+DROP TABLE genero;
+DROP TABLE Valoracion;
+DROP TABLE Fecha;

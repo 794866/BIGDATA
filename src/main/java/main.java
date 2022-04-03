@@ -1,4 +1,4 @@
-import com.opencsv.CSVReader;
+import static DataProcessing.TratandoDatosTablaGenero.*;
 
 import java.io.*;
 
@@ -6,7 +6,7 @@ public class main {
 
     public static void main(String[] args) throws IOException {
         try{
-            TratandoDatosTablaGenero.executeBuilderGeneroData();
+            executeBuilderGeneroData();
         }catch(Exception e){
             System.out.println(e.fillInStackTrace());
         }
