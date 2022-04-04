@@ -47,7 +47,12 @@ public class ProcesandoEquipoProduccion {
                             .replace("'name': ","")
                             .replace("'profile_path': ","")
                             .replace(" {","")
-                            .replace("'credit_id': ","");
+                            .replace("'credit_id': ","")
+                            .replaceAll("\"\"", "\'")
+                            .replace("O'","O")
+                            .replace("D'","D")
+                            .replace("Actor's","Actors");
+
 
                     String[] arrays = line.split("}]\",");
                     movieID = arrays[1];
