@@ -6,7 +6,7 @@ import java.util.List;
 
 import static Utils.Utils.*;
 
-public class TratandoDatosTablaGenero {
+public class ProcesandoGenero {
 
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos";
@@ -22,6 +22,7 @@ public class TratandoDatosTablaGenero {
 
             br = new BufferedReader(new FileReader(inputPath + inputFile));
             String line = br.readLine();
+
             while (null != line) {
                 String newLine = line;
 

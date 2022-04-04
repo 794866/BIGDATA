@@ -23,7 +23,6 @@ CREATE TABLE genero
 (
 	ID			NUMERIC,
 	nombre			VARCHAR(255)		NOT NULL,
-	valoracion			NUMERIC		NOT NULL		UNIQUE,
 	PRIMARY KEY(ID));
 
 

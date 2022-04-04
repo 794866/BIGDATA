@@ -1,4 +1,4 @@
 dataset/*
-.idea*
+.idea/*
 .gitignore
 target/*
