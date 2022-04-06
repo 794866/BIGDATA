@@ -20,65 +20,69 @@ public class ProcesandoEquipoProduccion {
 
     static List<String> split;
     static ArrayList<String> rows = new ArrayList();
+    static int count = 0;
 
     public static void executeProcesandoEquipoProduccion() throws IOException {
 
         BufferedReader br = null;
         String movieID;
-        Pattern p = Pattern.compile("/\"([^\"]*)\"|'([^']*)'/g\n");
 
         try {
             br = new BufferedReader(new FileReader(inputPath + inputFile));
             String line = br.readLine();
 
-            Pattern patt = Pattern.compile("\'([^\']*)\'");
-            String creditID="";
-
             while (null != line) {
                 if(!line.equals("crew,id")){
+                    try{
+                        String[] arrays = line.split("}]\",");
+                        if(!arrays[0].equals("[]")){
+                            System.out.println(count);
+                            count++;
+                            String newLine = line;
 
-                    String newLine = line;
+                            newLine = line.replace("\"[{'credit_id': ","")
+                                    .replace("'department': ","")
+                                    .replace("'gender': ","")
+                                    .replace("'id': ","")
+                                    .replace("'job': ","")
+                                    .replace("'name': ","")
+                                    .replace("'profile_path': ","")
+                                    .replace(" {","")
+                                    .replace("'credit_id': ","")
+                                    .replaceAll("\"\"", "\'")
+                                    .replace("O'","O")
+                                    .replace("D'","D")
+                                    .replace("Actor's","Actors");
 
-                    newLine = line.replace("\"[{'credit_id': ","")
-                            .replace("'department': ","")
-                            .replace("'gender': ","")
-                            .replace("'id': ","")
-                            .replace("'job': ","")
-                            .replace("'name': ","")
-                            .replace("'profile_path': ","")
-                            .replace(" {","")
-                            .replace("'credit_id': ","")
-                            .replaceAll("\"\"", "\'")
-                            .replace("O'","O")
-                            .replace("D'","D")
-                            .replace("Actor's","Actors");
+                            movieID = arrays[1];
 
+                            split = List.of(newLine.split("},"));
+                            for(int i=0;i<split.size();i++){
+                                String[] campos = split.get(i).split(",");
 
-                    String[] arrays = line.split("}]\",");
-                    movieID = arrays[1];
+                                if(!rows.contains(campos[0])){
+                                    rows.add(campos[0]);
+                                    String newInsert = "INSERT INTO EquipoProduccion(" +
+                                            "ID,"+
+                                            "nombreDepartamento,"+
+                                            "cargo,"+
+                                            "nombreTrabajador,"+
+                                            "genero,"+
+                                            "pelicula)" + "VALUES("
+                                            + campos[0] + ","
+                                            + campos[1] + ","
+                                            + campos[4] + ","
+                                            +campos[5]+","
+                                            +campos[2]+","
+                                            +movieID + ");";
 
-                    split = List.of(newLine.split("},"));
-                    for(int i=0;i<split.size();i++){
-                        String[] campos = split.get(i).split(",");
-
-                        if(!rows.contains(campos[0])){
-                            rows.add(campos[0]);
-                            String newInsert = "INSERT INTO EquipoProduccion(" +
-                                    "ID,"+
-                                    "nombreDepartamento,"+
-                                    "cargo,"+
-                                    "nombreTrabajador,"+
-                                    "genero,"+
-                                    "pelicula)" + "VALUES("
-                                    + campos[0] + ","
-                                    + campos[1] + ","
-                                    + campos[4] + ","
-                                    +campos[5]+","
-                                    +campos[2]+","
-                                    +movieID + ");";
-
-                            fileWritter(newInsert, "equipo_produccion.sql");
+                                    fileWritter(newInsert, "equipo_produccion.sql");
+                                }
+                            }
                         }
+                    }catch (Exception exception){
+                        fileWritter(String.valueOf(count), "errors.txt");
+                        line = br.readLine();
                     }
                 }
                 line = br.readLine();

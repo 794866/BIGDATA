@@ -9,12 +9,13 @@ import static Utils.Utils.*;
 public class ProcesandoGenero {
 
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
-            "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos";
+            "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/";
 
     static final String inputFile="procesandoGenero.csv";
 
     static List<String> split;
     static ArrayList<Integer> listID = new ArrayList();
+    static int count=0;
 
     public static void executeBuilderGeneroData() throws IOException {
         BufferedReader br = null;
@@ -24,6 +25,8 @@ public class ProcesandoGenero {
             String line = br.readLine();
 
             while (null != line) {
+                System.out.println(count);
+                count++;
                 String newLine = line;
 
                 newLine = line.replace("\"[{'id': ","")
