@@ -69,10 +69,10 @@ public class ProcesandoEquipoProduccion {
                                             "nombreTrabajador,"+
                                             "genero,"+
                                             "pelicula)" + "VALUES("
-                                            + campos[0] + ","
-                                            + campos[1] + ","
-                                            + campos[4] + ","
-                                            +campos[5]+","
+                                            + campos[0] + ",'"
+                                            + campos[1].replace("'","").trim() + "','"
+                                            + campos[4].replace("'","").trim() + "','"
+                                            +campos[5].replace("'","").trim() + "',"
                                             +campos[2]+","
                                             +movieID + ");";
 
@@ -88,7 +88,8 @@ public class ProcesandoEquipoProduccion {
                 line = br.readLine();
             }
         } catch (Exception e) {
-            System.out.println(e.fillInStackTrace());
+            //System.out.println(e.fillInStackTrace());
+            fileWritter(String.valueOf(count), "errors_equipoProduccion.txt");
         }
     }
 
