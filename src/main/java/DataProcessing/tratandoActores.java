@@ -1,5 +1,5 @@
 //https://dzone.com/articles/how-to-convert-csv-to-json-in-java
-package DataProcessing.segundaFase;
+package DataProcessing;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
 
 import static Utils.Utils.fileWritter;
 
-public class tratandoEquipoProduccion {
+public class tratandoActores {
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/fase2/";
 
-    static final String inputFile="equipoProduccion.csv";
+    static final String inputFile="actor.csv";
     static ArrayList<String> rows = new ArrayList();
 
-    public static void executetrataEquiposPro() throws IOException {
+    public static void executeTratandoActores() throws IOException {
         BufferedReader br = null;
         int count = 0;
         String newInsert="";
@@ -46,7 +46,7 @@ public class tratandoEquipoProduccion {
                             String nombreActor = null;
                             String clvActor = null;
                             if(textToGetActorId[5] != null){
-                                clvActor = getId(textToGetActorId[4]);
+                                clvActor = getId(textToGetActorId[5]);
                             }
                             if(clvActor != null && !rows.contains(clvActor)){
                                 rows.add(clvActor);
@@ -60,13 +60,13 @@ public class tratandoEquipoProduccion {
                                             .trim());
                                 }
 
-                                newInsert = "INSERT INTO equipoProduccion("+
-                                        "clvEquipoProduccion,nombreTrabajador)"+
+                                newInsert = "INSERT INTO actor("+
+                                        "clvActor,nombreActor)"+
                                         "VALUES(" + Integer.parseInt(clvActor) + "," + "'"+ nombreActor + "');";
-                                fileWritter(newInsert , "equipoProd_insert.sql");
+                                fileWritter(newInsert , "actor_insert.sql");
 
                                 count++;
-                                System.out.println("EquipoProduccion " + count +"\n");
+                                System.out.println("Actores " + count +"\n");
                             }
                         }
                     }
