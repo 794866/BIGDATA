@@ -1,7 +1,5 @@
-import static DataProcessing.EquipoProduccion.ProcesandoActores.executeProcesandoActores;
-import static DataProcessing.EquipoProduccion.ProcesandoEquipoProduccion.*;
-import static DataProcessing.ProcesandoGenero.*;
-import static Utils.limpiandoComas.executelimpiandoComas;
+import static DataProcessing.segundaFase.tratandoActores.executeTratandoActores;
+import static DataProcessing.segundaFase.tratandoEquipoProduccion.executetrataEquiposPro;
 
 import java.io.*;
 
@@ -9,10 +7,8 @@ public class main {
 
     public static void main(String[] args) throws IOException {
         try{
-            //executeBuilderGeneroData();
-            //executeProcesandoEquipoProduccion();
-            //executeProcesandoActores();
-            executelimpiandoComas();
+            executeTratandoActores();
+            executetrataEquiposPro();
         }catch(Exception e){
             System.out.println(e.fillInStackTrace());
         }

@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
 
 import static Utils.Utils.fileWritter;
 
-public class tratandoActores {
+public class tratandoEquipoProduccion {
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/fase2/";
 
-    static final String inputFile="actor.csv";
+    static final String inputFile="equipoProduccion.csv";
     static ArrayList<String> rows = new ArrayList();
 
-    public static void executeTratandoActores() throws IOException {
+    public static void executetrataEquiposPro() throws IOException {
         BufferedReader br = null;
         int count = 0;
         String newInsert="";
@@ -46,7 +46,7 @@ public class tratandoActores {
                             String nombreActor = null;
                             String clvActor = null;
                             if(textToGetActorId[5] != null){
-                                clvActor = getId(textToGetActorId[5]);
+                                clvActor = getId(textToGetActorId[4]);
                             }
                             if(clvActor != null && !rows.contains(clvActor)){
                                 rows.add(clvActor);
@@ -60,13 +60,13 @@ public class tratandoActores {
                                             .trim());
                                 }
 
-                                newInsert = "INSERT INTO actor("+
-                                        "clvActor,nombreActor)"+
+                                newInsert = "INSERT INTO equipoProduccion("+
+                                        "clvEquipoProduccion,nombreTrabajador)"+
                                         "VALUES(" + Integer.parseInt(clvActor) + "," + "'"+ nombreActor + "');";
-                                fileWritter(newInsert , "actor_insert.sql");
+                                fileWritter(newInsert , "equipoProd_insert.sql");
 
                                 count++;
-                                System.out.println("Actores " + count +"\n");
+                                System.out.println("EquipoProduccion " + count +"\n");
                             }
                         }
                     }
