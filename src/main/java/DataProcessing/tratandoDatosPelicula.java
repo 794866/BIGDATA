@@ -10,15 +10,15 @@ import java.util.regex.Pattern;
 
 import static Utils.Utils.fileWritter;
 
-public class procesandoPeliculas {
+public class tratandoDatosPelicula {
 
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/fase2/";
 
-    static final String inputFile="moviesDelimitado.csv";
+    static final String inputFile="peliculas_tratadas.csv";
     static ArrayList<String> rows = new ArrayList();
 
-    public static void executeProcesandoPeliculas() throws IOException {
+    public static void executeProcesandoDatosPeliculas() throws IOException {
         BufferedReader br = null;
         int count = 0;
         try {
@@ -45,16 +45,14 @@ public class procesandoPeliculas {
                             budget = Integer.parseInt(splitedText[5]);
                             revenue = Integer.parseInt(splitedText[6]);
 
-                            String newInsert = "INSERT INTO pelicula(clvPelicula,titulo,yearPublication,duracionMinutos,popularidad," +
-                                    "presupuesto,ingresos) VALUES(" + id + ",'" + title + "'," + releaseDate
-                                    + "," + runtime + "," + popularity + "," + budget + "," + revenue + ");";
+                            String newInsert = "INSERT INTO datospelicula(clvPelicula,titulo,fechaPublicacion,duracionMinutos,popularidad," +
+                                    "presupuesto,ingresos) VALUES(" + id + ",'" + title + "','" + releaseDate
+                                    + "'," + runtime + "," + popularity + "," + budget + "," + revenue + ");";
 
-                            fileWritter(newInsert, "pelicula_insert.sql");
+                            fileWritter(newInsert, "datosPelicula_insert.sql");
                         }
                     }
-                    if(count == 12841){
-                        System.out.println("next");
-                    }
+
                     count++;
                     System.out.println(count);
                 }

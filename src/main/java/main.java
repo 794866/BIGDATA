@@ -1,4 +1,5 @@
-import static DataProcessing.procesandoPeliculas.executeProcesandoPeliculas;
+
+import static DataProcessing.tratandoProductor.executeTrataProductor;
 
 import java.io.*;
 
@@ -8,7 +9,12 @@ public class main {
         try{
 //            executeTratandoActores();
 //            executetrataEquiposPro();
-            executeProcesandoPeliculas();
+//            executeProcesandoPeliculas();
+//            executeTratandoGeneros();
+            //executeProcesandoDatosPeliculas();
+            executeTrataProductor();
+            //executeProcesandoDatosPeliculas();
+            //executeTratandoProductorPeliculas();
         }catch(Exception e){
             System.out.println(e.fillInStackTrace());
         }
