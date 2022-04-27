@@ -7,7 +7,7 @@ datos en condiciones para el DataMart de peliculas estipulado en la memoria.
 El fichero TABLES.sql contiene la creación de tablas que conforman el DataMart que se observa
 en el diagrama en estrella en la imagen.
 
-![alt text](https://github.com/uri/BIGDATA/blob/main/diagramaEstrella_DataMart.jpg?raw=true)
+![diagrama](https://github.com/794866/BIGDATA/raw/main/diagramaEstrella_DataMart.png?raw=true)
 
 Los ficheros de poblacion de la base de datos se encuentran en la carpeta compartida de drive
 https://drive.google.com/drive/folders/1ibCYESEphwGH7EejZyCJtI4X-tVllt13?usp=sharing
