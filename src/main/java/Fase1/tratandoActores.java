@@ -1,5 +1,5 @@
 //https://dzone.com/articles/how-to-convert-csv-to-json-in-java
-package DataProcessing;
+package Fase1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

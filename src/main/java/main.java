@@ -1,14 +1,11 @@
 
-import static DataProcessing.DetallePelicula_FactTable.tratandoDetallesPeliculas;
-import static DataProcessing.tratandoActores.executeTratandoActores;
-import static DataProcessing.tratandoDatosPelicula.executeProcesandoDatosPeliculas;
-import static DataProcessing.tratandoGeneros.executeTratandoGeneros;
-import static DataProcessing.tratandoProductor.executeTrataProductor;
-import static DataProcessing.tratandoProductorPeliculas.executeTratandoProductorPeliculas;
-import static normanDataBase.crew.crew;
-import static normanDataBase.pelicula.pelicula;
-import static normanDataBase.productor.productor;
-import static normanDataBase.valoracionPelicula.factTable_norman_database;
+import static Fase1.DetallePelicula_FactTable.tratandoDetallesPeliculas;
+import static Fase1.tratandoActores.executeTratandoActores;
+import static Fase1.tratandoDatosPelicula.executeProcesandoDatosPeliculas;
+import static Fase1.tratandoGeneros.executeTratandoGeneros;
+import static Fase1.tratandoProductor.executeTrataProductor;
+import static Fase1.tratandoProductorPeliculas.executeTratandoProductorPeliculas;
+import static Fase2.valoracionPelicula.factTable_norman_database;
 
 import java.io.*;
 

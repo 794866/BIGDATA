@@ -1,5 +1,5 @@
 //https://dzone.com/articles/how-to-convert-csv-to-json-in-java
-package normanDataBase;
+package Fase1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
 
 import static Utils.Utils.fileWritter;
 
-public class productor {
+public class tratandoProductor {
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/fase2/";
 
     static final String inputFile="credits.csv";
     static ArrayList<String> rows = new ArrayList();
 
-    public static void productor() throws IOException {
+    public static void executeTrataProductor() throws IOException {
         BufferedReader br = null;
         int count = 0;
         String newInsert="";
@@ -52,19 +52,8 @@ public class productor {
                                 }
                                 if(clv_productor != null && !rows.contains(clv_productor)){
                                     rows.add(clv_productor);
-
                                     String textToNameActor = textToGetActorId[6];
                                     List<String> splitedTextToNameActor = List.of(textToNameActor.split(","));
-
-                                    String textToIdCrew = textToGetActorId[1];
-                                    List<String> clv_crew = List.of(textToIdCrew.split(","));
-
-                                    String textToNombreDepartamento = textToGetActorId[2];
-                                    List<String> nombreDepartamento = List.of(textToNombreDepartamento.split(","));
-
-                                    String textToCargo = textToGetActorId[5];
-                                    List<String> cargo = List.of(textToCargo.split(","));
-
                                     if(splitedTextToNameActor.get(0) != null){
                                         nombreTrabajador = String.valueOf(splitedTextToNameActor.get(0).
                                                 replace("'","")
@@ -74,16 +63,13 @@ public class productor {
                                     }
 
                                     newInsert = "INSERT INTO productor("+
-                                            "clv_productor,clv_crew,nombreDepartamento,cargo,nombreTrabajador)"+
-                                            "VALUES(" + clv_productor + "," +
-                                            "'" + clv_crew.get(0).replace("'","").trim() + "'," +
-                                            "'" + nombreDepartamento.get(0).replace("'","").trim() + "'," +
-                                            "'" + cargo.get(0).replace("'","").trim() + "'," +
-                                            "'" + nombreTrabajador.replace("'","").replace("\"","").trim() +
-                                            "');";
+                                            "clv_productor,nombreTrabajador)"+
+                                            "VALUES(" + clv_productor + "," + "'"+ nombreTrabajador + "');";
+                                    fileWritter(newInsert , "productor_insert.sql");
 
-                                    fileWritter(newInsert , "norman_database/productor/productor.sql");
-
+                                    if(count == 96){
+                                        //System.out.println("next");
+                                    }
                                     count++;
                                     System.out.println("productor " + count +"\n");
                                 }
@@ -96,7 +82,7 @@ public class productor {
             }
 
         } catch (Exception e) {
-            fileWritter(forError, "norman_database/productor/errors.txt");
+            fileWritter(forError, "errors.txt");
         }
     }
 

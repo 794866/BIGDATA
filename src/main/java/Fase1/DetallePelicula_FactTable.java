@@ -1,4 +1,4 @@
-package normanDataBase;
+package Fase1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static Utils.Utils.fileWritter;
 
-public class valoracionPelicula {
+public class DetallePelicula_FactTable {
 
     static final String inputPath = "/home/uri/Documentos/Universidad/BIGDATA/PRACTICAS" +
             "/datasets/datasets/kaggelMoviesDataSet/procesandoDatos/fase2/";
@@ -15,7 +15,7 @@ public class valoracionPelicula {
     static final String inputFile="ratings.csv";
     static ArrayList<String> rows = new ArrayList();
 
-    public static void factTable_norman_database() throws IOException {
+    public static void tratandoDetallesPeliculas() throws IOException {
         BufferedReader br = null;
         int count = 0;
         String forLineError = null;
@@ -29,22 +29,22 @@ public class valoracionPelicula {
                 if(!line.equals("userId,movieId,rating,timestamp")){
                     String[] splitedText = line.split(",");
 
-                    String userID = null;
-                    String clv_pelicula = null;
-                    String calificacion = null;
+                    String userId = null;
+                    String movieId = null;
+                    String rating = null;
 
                     if(!splitedText[0].equals("") && !splitedText[1].equals("") && !splitedText[2].equals("")){
-                        userID = splitedText[0];
-                        clv_pelicula = splitedText[1];
-                        calificacion = splitedText[2];
+                        userId = splitedText[0];
+                        movieId = splitedText[1];
+                        rating = splitedText[2];
 
-                        //clv_pelicula, userID, calificacion
-                        String newInsert = "INSERT INTO valoracionPelicula(clv_pelicula,userID," +
-                                "calificacion) VALUES("+ clv_pelicula+","+userID+","+calificacion+");";
+                        String newInsert = "INSERT INTO DetallePelicula(clvPelicula,clv_pelicula," +
+                                "userID,calificacion) VALUES(" + movieId + "," + movieId + "," + userId + ","
+                                + rating + ");";
 
-                        fileWritter(newInsert, "norman_database/fact_table/valoracionPelicula_FactTable.sql");
+                        fileWritter(newInsert, "detallesPeliculas_FactTable.sql");
                     }else{
-                        fileWritter(line, "norman_database/fact_table/errorFactTable.txt");
+                        fileWritter(line, "errorFactTable.txt");
                     }
                 }
                 line = br.readLine();
@@ -52,7 +52,7 @@ public class valoracionPelicula {
 
         } catch (Exception e) {
             //System.out.println(e.fillInStackTrace());
-            fileWritter(forLineError, "norman_database/fact_table/exceptionFactTable.txt");
+            fileWritter(forLineError, "exceptionFactTable.txt");
         }
     }
 }
