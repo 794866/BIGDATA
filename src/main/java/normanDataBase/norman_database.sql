@@ -1,6 +1,6 @@
 CREATE TABLE crew
 (
-	clv_crew			NUMERIC,
+	clv_crew			VARCHAR(255),
 	PRIMARY KEY(clv_crew));
 
 
@@ -13,14 +13,14 @@ CREATE TABLE genero
 
 CREATE TABLE casting
 (
-	clv_cast			NUMERIC,
+	clv_cast			VARCHAR(255),
 	PRIMARY KEY(clv_cast));
 
 
 CREATE TABLE actor
 (
 	clv_actor			NUMERIC,
-	clv_cast			NUMERIC,
+	clv_cast			VARCHAR(255),
 	nombreActor			VARCHAR(255)		NOT NULL,
 	descripcionPersonaje			VARCHAR(255)		NOT NULL,
 	PRIMARY KEY(clv_actor,clv_cast),
@@ -29,7 +29,7 @@ CREATE TABLE actor
 CREATE TABLE productor
 (
 	clv_productor			NUMERIC,
-	clv_crew			NUMERIC,
+	clv_crew			VARCHAR(255),
 	nombreDepartamento			VARCHAR(255)		NOT NULL,
 	cargo			VARCHAR(255)		NOT NULL,
 	nombreTrabajador			VARCHAR(255)		NOT NULL,
@@ -39,8 +39,8 @@ CREATE TABLE productor
 CREATE TABLE pelicula
 (
 	clv_pelicula			NUMERIC,
-	clv_crew			NUMERIC,
-	clv_cast			NUMERIC,
+	clv_crew			VARCHAR(255),
+	clv_cast			VARCHAR(255),
 	titulo			VARCHAR(255)		NOT NULL,
 	fechaPublicacion			DATE		NOT NULL,
 	duracionMinutos			NUMERIC		NOT NULL,

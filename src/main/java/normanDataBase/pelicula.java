@@ -52,7 +52,6 @@ public class pelicula {
                             fileWritter(newInsert, "norman_database/pelicula/pelicula.sql");
                         }
                     }
-
                     count++;
                     System.out.println(count);
                 }
